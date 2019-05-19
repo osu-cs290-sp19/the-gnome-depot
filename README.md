@@ -2,6 +2,6 @@
 
 A queryable hardware store.
 
-![Image](https://github.com/osu-cs290-sp19/final-project-final-project-gnome-depot/images/the-gnome-depot.PNG)
+![Image](https://github.com/osu-cs290-sp19/final-project-final-project-gnome-depot/images/the-gnome-depot.png)
 
 (not our artwork, all credit to: https://rhydin.org/shops/shops.php?id=3 or their OP source).
