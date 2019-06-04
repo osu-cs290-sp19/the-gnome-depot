@@ -1,0 +1,27 @@
+{
+  "name": "the-gnome-depot",
+  "version": "1.0.0",
+  "description": "A Hardware Depot as a Final for CS290",
+  "main": "gnome-depot-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Built\" && exit 1",
+    "prestart": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-sp19/the-gnome-depot.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-sp19/the-gnome-depot/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-sp19/the-gnome-depot",
+  "dependencies": {
+    "express": "^4.17.0",
+    "handlebars": "^4.1.2",
+    "express-handlebars": "^3.1.0"
+  },
+  "devDependencies": {}
+}
