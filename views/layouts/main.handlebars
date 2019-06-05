@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>The Gnome Depot</title>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css" media="screen">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.runtime.js" charset="utf-8"
+        defer></script>
+    <script src="twitTemplate.js" charset="utf-8" defer></script>
+    <script src="/gnome-depot-server.js" charset="utf-8" defer></script>
+</head>
+
+<body>
+    <header>
+        <div id="upper-nav" class="">
+            <span class="login-trigger">Login</span>
+            <div class="login">
+                <input type="username" placeholder="Username" autofocus />
+                <input type="password" placeholder="Password" />
+                <button>
+                    <span>log in</span>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Products</li>
+                <input type="text" name="search" placeholder="Whatcha lookin for?">
+            </ul>
+        </nav>
+    </header>
+
+    {{{body}}}
+
+</body>
+
+</html>
