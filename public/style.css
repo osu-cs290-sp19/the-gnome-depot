@@ -84,7 +84,7 @@ header {
 
 #upper-nav a,
 #upper-nav span {
-    color: white;
+    font-weight: 700;
     padding: 0px 15px;
     cursor: pointer;
 }
@@ -96,21 +96,35 @@ header {
 }
 
 .login {
-    position: absolute;
-    height: 0;
+    display: none;
+    position: absolute; 
+    z-index: 9999; 
+    top: 35px;
+    right: 1px; 
+    width: auto; 
+    padding: 8px;
     border-radius: 1%;
     background-color: white;
 }
 
-.login-trigger:hover .login,
-.login:hover {
+.login-trigger {
+    color: white;
+}
+
+.login-trigger:hover .login {
     display: block;
 }
 
-/* hidden till implementation */
-.login {
-    display: none
-}
+.login-trigger:hover span::after {
+    content: "";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    margin-top: -5px;
+    right: 0;
+    height: 50px;
+    width: 400px;
+  }
 
 #main-nav {
     display: flex;
@@ -118,6 +132,10 @@ header {
     margin: 0;
     padding: 3px 0 3px 20px;
     flex-wrap: nowrap;
+}
+
+.gnome-logo {
+    height: 50px;
 }
 
 .nav-link {
