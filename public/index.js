@@ -16,3 +16,8 @@
  *
  * DO NOT COPY OUR CODE, WRITE YOUR OWN, *******!
  */
+
+ // check if tools have been emptied, aka stolen via XSS, 
+ // then load screen with gnomes out of box
+ // Gnome: Thanks for freeing me. 
+ // You've been Gnomed! 
