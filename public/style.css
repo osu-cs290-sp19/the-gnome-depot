@@ -93,6 +93,7 @@ header {
     cursor: pointer;
 }
 
+/*
 .login {
     display: none;
     position: absolute;
@@ -121,6 +122,8 @@ header {
             var(--maincolor));
 }
 
+*/
+
 .login-trigger {
     color: white;
 }
@@ -130,7 +133,7 @@ header {
     
 }
 
-/* This makes it more user friendly to get your mouse into the login button */
+
 .login-trigger:hover span::after {
     content: "";
     z-index: 1;

@@ -52,6 +52,12 @@ app.get('/products', function (req, res, next) {
   
 });
 
+app.get('/login', function (req, res, next) {
+
+	res.status(200).render('partials/login');
+  
+});
+
 app.get('*', function (req, res) {
 	res.status(404).render('partials/404');
   });
