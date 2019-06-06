@@ -21,7 +21,7 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
-
+var bodyParser = require('body-parser');
 /* Express & Handlebars */
 var express = require('express');
 var exphbs = require('express-handlebars');
@@ -36,7 +36,9 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+app.use(bodyParserjson());
 
+/* APP.GET */
 
 app.get('/', function (req, res, next) {
 
@@ -53,6 +55,30 @@ app.get('/products', function (req, res, next) {
 app.get('*', function (req, res) {
 	res.status(404).render('partials/404');
   });
+
+/* APP.POST*/
+
+app.post('/useradd', function (req, res){
+	if (req.body && req.body.username && req.body.passHash){
+		console.log("== Recieved POST:");
+		console.log(" - Username: " + req.body.username);
+		console.log(" - PassHash: " + req.body.passHash);
+
+		// ADD UN, PASS TO DB HERE
+
+		// COMPLETE THE PROCESS HERE
+
+	}
+
+	else {
+		console.log("== Recieved Incomplete POST. ERRORING!");
+		res.status(400).send("Requests to this path must " +
+      		"contain a JSON body with username and password hash " +
+       		"fields.");
+	}
+});
+
+/* APP.LISTEN */
 
 app.listen(port, function () {
 	console.log("== Server is listening on port", port);
