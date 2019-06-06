@@ -42,12 +42,22 @@ app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
 
+
 app.get('/', function (req, res, next) {
 
 	res.status(200).render('partials/home');
   
 });
 
+app.get('/products', function (req, res, next) {
+
+	res.status(200).render('partials/toolsPage');
+  
+});
+
+// if(fs.existsSync(req)) {
+// 	res.status(200).render('partials/' + req);
+// }
 // app.get('/:page', function(req, res, next) {
 // 	// if pages exists
 // 	// then serve that page,

@@ -16,9 +16,3 @@
  *
  * DO NOT COPY OUR CODE, WRITE YOUR OWN, *******!
  */
- 
-$(document).ready(function () {
-    $('.trigger-next').click(function () {
-      $(this).next().toggleClass('active');
-    });
-  });
