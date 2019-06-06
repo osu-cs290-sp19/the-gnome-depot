@@ -5,12 +5,11 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css" media="screen">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.runtime.js" charset="utf-8"
         defer></script>
-    <script src="twitTemplate.js" charset="utf-8" defer></script>
     <script src="/gnome-depot-server.js" charset="utf-8" defer></script>
 </head>
 
@@ -26,12 +25,13 @@
                 </button>
             </div>
         </div>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>Products</li>
-                <input type="text" name="search" placeholder="Whatcha lookin for?">
+        <nav id="navbar">
+            <ul id="main-nav">
+                <li class="nav-item nav-link">Home</li>
+                <li class="nav-item nav-link">Products</li>
             </ul>
+            <input class="navbar-search" type="text" name="search" placeholder="Whatcha lookin for?">
+            <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
         </nav>
     </header>
 

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node gnome-depot-server.js",
-    "build": "echo \"Built\" && exit 1",
+    "build": "echo \"Built\"",
     "prestart": "npm run build"
   },
   "repository": {

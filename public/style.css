@@ -16,284 +16,169 @@
  *
  * DO NOT COPY OUR CODE, WRITE YOUR OWN, *******!
  */
- :root {
+
+:root {
     --maincolor: #f09502;
-    --accentcolor: #b10505;
-    --background: #343944;
+    --accentcolor: #0508b1;
+    --background: #272b33;
     --altbackground: #424958;
-  }
+}
+
+html,
+body {
+    margin: 0;
+    font-family: Roboto, Helvetica, sans-serif;
+    background: var(--altbackground);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:link,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+
+/*_____________________nav_____________________*/
 
 
-
- /*_____________________nav_____________________*/
-
- 
-  header {
-    z-index: 2;
-    position: relative;
+header {
+    position: fixed;
     width: 100%;
     top: 0;
-  }
-  @media screen and (min-width: 820pt) {
-    /*this header being fixed allows desktop version to stay on top since
-    the mobile header needs to be relative in order to scrool down it */
-    header {
-      position: fixed;
-    }
-  }
-  #navbar {
+}
+
+#navbar {
+    display: flex;
     font-size: 1.2em;
+    text-align: left;
+    align-items: center;
     background: var(--background);
-  }
-  @media screen and (min-width: 820pt) {
-    #navbar {
-      display: grid;
-      top: 1.7em;
-      grid-template-columns: 1fr auto minmax(700px, 1fr) 1fr;
-    }
-  }
-  #navbar::after {
-    content:'';
+}
+
+#navbar::after {
+    content: '';
     display: block;
     position: absolute;
-    bottom: -14px;
+    bottom: -15px;
     height: 15px;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.20) 0,rgba(0,0,0,0) 10px,rgba(0,0,0,0) 100%);
-  }
-  #upper-nav {
-    display: block; /* should we have this on mobile version? */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.20) 0, rgba(0, 0, 0, 0) 10px, rgba(0, 0, 0, 0) 100%);
+}
+
+#upper-nav {
+    display: block;
+    /* should we have this on mobile version? */
     z-index: 2;
     text-align: right;
-    background-image: linear-gradient(
-      90deg,
-      var(--accentcolor),
-      var(--maincolor)
-    );
+    background-image: linear-gradient(90deg,
+            var(--accentcolor),
+            var(--maincolor));
     width: 100%;
     padding: 0.4em 0 0.4em 0;
-  }
-  @media screen and (min-width: 820pt) {
-    #upper-nav {
-      display: block;
-    }
-  }
-  #upper-nav a,
-  #upper-nav span {
+}
+
+#upper-nav a,
+#upper-nav span {
     color: white;
     padding: 0px 15px;
     cursor: pointer;
-  }
-  #upper-nav a:hover,
-  #upper-nav span:hover {
+}
+
+#upper-nav a:hover,
+#upper-nav span:hover {
     color: var(--accentcolor);
     cursor: pointer;
-  }
-  .login {
+}
+
+.login {
     position: absolute;
     height: 0;
     border-radius: 1%;
     background-color: white;
-  }
-  .login-trigger:hover .login,
-  .login:hover {
+}
+
+.login-trigger:hover .login,
+.login:hover {
     display: block;
-  }
-  /* hidden till implementation */
-  .login-trigger,
-  .login {
+}
+
+/* hidden till implementation */
+.login {
     display: none
-  }
-  nav {
-    text-align: left;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    background: var(--background);
-    -webkit-transition: all 400ms ease-in-out;
-    -moz-transition: all 400ms ease-in-out;
-    -o-transition: all 400ms ease-in-out;
-    transition: all 400ms ease-in-out;
-  }
-  @media screen and (min-width: 820pt) {
-    nav {
-      position: initial;
-      max-height: 100px;
-      grid-column: 3 / 4;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      overflow: visible;
-      background: transparent;
-    }
-  }
-  nav.active {
-    max-height: 3000px;
-  }
-  #main-nav {
+}
+
+#main-nav {
     display: flex;
-    margin: 0;
-    padding: 0;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    color: white;
-    top: 100%;
-  }
-  @media screen and (min-width: 820pt) {
-    #main-nav {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-    }
-  }
-  .nav-link:hover {
-    margin-left: -2px;
-    border-left: 2px solid var(--accentcolor);
-  }
-  .nav-item {
-    padding: .5em 0.5em;
-  }
-  .nav-item span {
     width: 100%;
-  }
-  .item-hover-state {
+    margin: 0;
+    padding: 3px 0 3px 20px;
+    flex-wrap: nowrap;
+}
+
+.nav-link {
+    color: white;
+    padding: 10px;
     display: inline-block;
+}
+
+.nav-link:hover {
+    margin-bottom: -2px;
+    border-bottom: 2px solid var(--maincolor);
+}
+
+.item-hover-state {
+    display: inline-block;
+}
+.navbar-search {
+    justify-self: flex-end;
+    margin-right: 20px;
+    padding: 0;
+}
+#navbar-search-button {
+    margin-left: -5px;
+    font-size: 16px;
+    background: none;
+    border: none;
+    color: #343434;
+    cursor: pointer;
   }
-  @media screen and (min-width: 820pt) {
-    .nav-item:hover .item-hover-state,
-    .item-hover-state:hover {
-      margin: 0 -2px;
-      background-color: transparent;
-      border-left: 2px solid var(--accentcolor);
-      border-right: 2px solid var(--accentcolor);
-    }
+  
+  #navbar-search-button:hover {
+    color: #319df6;
   }
-  @media screen and (min-width: 820pt) {
-    .nav-item {
-      padding: 0 20px;
-    }
-    .nav-item:hover .subnav,
-    .subnav:hover {
-      display: grid;
-      z-index: 3;
-    }
+  
+  #navbar-search-button:focus {
+    color: #319df6;
+    outline: none;
   }
-  /* these 4 sections allow for the titles to be a 
-      link in the desktop version, while keeping the mobile 
-      nav working  */
-  .nav-item span a {
-    display: none;
-  }
-  @media screen and (min-width: 820pt) {
-    .nav-item span a {
-      display: block;
-    }
-  }
-  .nav-item span p {
-    display: block;
-  }
-  @media screen and (min-width: 820pt) {
-    .nav-item span p {
-      display: none;
-    }
-  }
-  @media screen and (min-width: 820pt) {
-    /*  This part below allows you to move your cursor directly to any part
-          of the subnav without triggering another section*/
-    .nav-item:hover span::after {
-      content: "";
-      z-index: 1;
-      display: block;
-      position: absolute;
-      margin-top: -5px;
-      height: 50px;
-      width: 400px;
-    }
-  }
-  .subnav {
-    max-height: 0;
-    margin-top: 5px;
-    z-index: 3;
-    background: var(--altbackground);
-    border-radius: 1%;
-    overflow: hidden;
-    -webkit-transition: all 500ms ease;
-    -moz-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease;
-    grid-template-columns: 1fr;
-  }
-  @media screen and (min-width: 820pt) {
-    .subnav {
-      display: none;
-      position: absolute;
-      max-height: 500px; /* arbitrary large number to negate mobile max-height */
-      width: auto;
-      margin: 30px 0 0 0px;
-      padding: 15px;
-      background: var(--background);
-    }
-  }
-  .subnav.active {
-    max-height: 800px;
-  }
-  #main-nav a,
-  #main-nav span {
+
+#main-nav a,
+#main-nav span {
     color: white;
     text-align: left;
     cursor: pointer;
-  }
-  #main-nav span a:hover {
+}
+
+#main-nav span a:hover {
     border: none;
-  }
-  .subnav h4 {
-    color: var(--accentcolor);
-    font-size: 1em;
-    padding: 0.5em 2em 0.5em;
-    white-space: nowrap;
-    cursor: default;
-  }
-  @media screen and (min-width: 820pt) {
-    .subnav h4 {
-      padding: 10px 0 0 5px;
-    }
-  }
-  /* solely responsible for links in nav */
-  .nav-link {
-    display: grid;
-    padding: 1em;
-  }
-  .subnav a {
-    padding-left: 3em;
-  }
-  @media screen and (min-width: 820pt) {
-    .subnav .nav-link,
-    .subnav a {
-      font-size: 0.9em;
-      padding: .4em 2em .4em .3em;
-      white-space: nowrap;
-    }
-  }
-  @media screen and (min-width: 820pt) {
-    .subnav-s1,
-    .subnav-s2,
-    .subnav-s3,
-    .subnav-s4,
-    .subnav-s5,
-    .subnav-s6,
-    .subnav-s7 {
-      padding: 10px;
-    }
-  }
-  @media screen and (min-width: 820pt) {
-    .subnav-small {
-      grid-template-columns: 1fr;
-    }
-    .subnav-large {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-  
-   /*_____________________/nav_____________________*/
+}
+
+/*_____________________/nav_____________________*/
+
+/*_____________________home_____________________*/
+.banner-container {
+    display: flex;
+    justify-content: center;
+}
+.banner {
+   margin: 90px 0;
+    width: 1280px;
+
+}
+
+/*____________________/home_____________________*/
