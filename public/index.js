@@ -24,21 +24,21 @@
 
  // ^Thats dank lol.
 
- var signupAcceptButton = document.getElementbyID('signupAcceptButton');
+ var signupAcceptButton = document.getElementById('signupAcceptButton');
  signupAcceptButton.addEventListener('click', function (event){
 
- 	var username = document.getElementbyID('signupUsername').value;
- 	var passHash = document.getElementbyID('signupPassword').value;
+ 	var username = document.getElementById('signupUsername').value;
+ 	var passHash = document.getElementById('signupPassword').value;
 
  	postSignupCredentials(username, passHash);
 
  })
 
-  var loginAcceptButton = document.getElementbyID('loginAcceptButton');
+  var loginAcceptButton = document.getElementById('loginAcceptButton');
  loginAcceptButton.addEventListener('click', function (event){
 
- 	var username = document.getElementbyID('loginUsername').value;
- 	var passHash = document.getElementbyID('loginPassword').value;
+ 	var username = document.getElementById('loginUsername').value;
+ 	var passHash = document.getElementById('loginPassword').value;
 
  	postLoginCredentials(username, passHash);
 

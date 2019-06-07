@@ -36,7 +36,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-app.use(bodyParserjson());
+app.use(bodyParser.json());
 
 /* APP.GET */
 
@@ -73,6 +73,8 @@ app.post('/useradd', function (req, res){
 		// ADD UN, PASS TO DB HERE
 
 		// COMPLETE THE PROCESS HERE
+
+		res.status(200).send("Successfully Added.");
 
 	}
 
