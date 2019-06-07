@@ -41,16 +41,6 @@ var mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort
 var db = null;
 
 console.log("mongoUrl: ", mongoUrl);
-/* READING TOOLS INTO DATABASE FROM JSON FILE */
-var toolData = fs.readFileSync('tools.json', 'utf8');
-var parsedData = JSON.parse(toolData);
-var toolsArray = [];
-var numTools = Object.keys(parsedData).length;
-
-for(var i = 0; i < numTools; i++){
-  toolsArray.push(parsedData[i]);
-}
-/* READING TOOLS FROM JSON FILE */
 
 
 app.engine('handlebars', exphbs({
@@ -70,9 +60,6 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/products', function (req, res, next) {
-
-	var tools = db.collection('tools');
-	tools.insertMany(toolsArray);
 
 	res.status(200).render('partials/toolsPage');
 
@@ -107,7 +94,16 @@ app.post('/useradd', function (req, res){
 					username: req.body.username,
 					password: req.body.passHash
 				};
-				credentials.insertOne(newUser);
+				credentials.insertOne(newUser, function(err, result){
+					if(err){
+						res.status(500).send("Error sending newUser to DB");
+					} else {
+						if(result.matchedCount > 0){
+							res.status(200).send("Success");
+						} else {
+							res.status(404).send("Error 404 Not Sure");
+						}
+					}});
 
 			} else {
 				console.log("User already in database.");
@@ -172,9 +168,9 @@ app.post('/userauth', function (req, res){
 	  	} else if(userData.length < 1){
 				success = 0;
 				console.log("== Invalid Username Or Password");
-				console.log("Invalid Username Or Password.");
+				res.status(400).send("Invalid Username Or Password.");
 			} else {
-				console.log("User credentials are correct!");
+				console.log("User credentials are correct.");
 			}
 		});
 
@@ -183,7 +179,9 @@ app.post('/userauth', function (req, res){
 		if (success){
 			console.log("== Sending Auth Success");
 			res.status(200).send("Successfully Added.");
-		} else{
+		}
+
+		else{
 			console.log("== Sending Auth Failure");
 			res.status(400).send("Authentication Failure.");
 		}

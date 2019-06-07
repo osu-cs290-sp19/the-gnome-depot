@@ -1,0 +1,25 @@
+[
+  {
+    "name" : "drill",
+    "price" : "24.99",
+    "weight" : "3 lb"
+  },
+
+  {
+    "name" : "hammer",
+    "price" : "12.50",
+    "weight" : "1.5 lb"
+  },
+
+  {
+    "name" : "screws",
+    "price" : "7.99",
+    "weight" : "0.5 lb"
+  },
+
+  {
+    "name" : "ruler",
+    "price" : "5.75",
+    "weight" : "0.3 lb"
+  }
+]
