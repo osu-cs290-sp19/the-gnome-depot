@@ -90,16 +90,27 @@ app.post('/useradd', function (req, res){
   		username: req.body.username
 		});
 
-		if(usersCursor.next() === null){
-			//ADD USER TO DATABASE
-			credentials.insertOne({
-				username: req.body.username,
-				password: req.body.passHash
-			});
-		} else {
-			console.log("== User Already Exists. ERRORING!");
-			res.status(400).send("User Already Exists");
-		}
+		usersCursor.next(function (err, userDoc) {
+  	if (err) {
+    	res.status(500).send("Error fetching user from DB.");
+  	} else if (!userDoc) {
+			console.log("User no existo");
+  	} else {
+	    console.log("User does exist");
+  	}
+	});
+
+
+		// if(usersCursor.next() === null){
+		// 	//ADD USER TO DATABASE
+		// 	credentials.insertOne({
+		// 		username: req.body.username,
+		// 		password: req.body.passHash
+		// 	});
+		// } else {
+		// 	console.log("== User Already Exists. ERRORING!");
+		// 	res.status(400).send("User Already Exists");
+		// }
 
 		// COMPLETE THE PROCESS HERE
 
