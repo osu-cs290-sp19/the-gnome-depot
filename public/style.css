@@ -226,6 +226,12 @@ header {
 }
 
 /*____________________/home_____________________*/
+/*____________________login_____________________*/
+.signupFields {
+    display: flex;
+    justify-content: center;
+}
+/*___________________/login_____________________*/
 /*___________________products___________________*/
 .tools-container {
     display: flex;
