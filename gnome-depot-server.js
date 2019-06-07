@@ -66,7 +66,7 @@ app.get('*', function (req, res) {
 
 app.post('/useradd', function (req, res){
 	if (req.body && req.body.username && req.body.passHash){
-		console.log("== Recieved POST:");
+		console.log("== Recieved POST for AuthAdd:");
 		console.log(" - Username: " + req.body.username);
 		console.log(" - PassHash: " + req.body.passHash);
 
@@ -76,6 +76,37 @@ app.post('/useradd', function (req, res){
 
 		res.status(200).send("Successfully Added.");
 
+	}
+
+	else {
+		console.log("== Recieved Incomplete POST. ERRORING!");
+		res.status(400).send("Requests to this path must " +
+      		"contain a JSON body with username and password hash " +
+       		"fields.");
+	}
+});
+
+app.post('/userauth', function (req, res){
+	if (req.body && req.body.username && req.body.passHash){
+		console.log("== Recieved POST for UserAuth:");
+		console.log(" - Username: " + req.body.username);
+		console.log(" - PassHash: " + req.body.passHash);
+
+		// CHECK USERNAME & PASSWORD IN DB HERE
+
+		// COMPLETE THE PROCESS HERE
+
+		var success = 1;
+
+		if (success){
+			console.log("== Sending Auth Success");
+			res.status(200).send("Successfully Added.");
+		}
+
+		else{
+			console.log("== Sending Auth Failure");
+			res.status(400).send("Authentication Failure.");
+		}
 	}
 
 	else {

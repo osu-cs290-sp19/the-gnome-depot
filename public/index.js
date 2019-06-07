@@ -46,6 +46,11 @@
 
  function postSignupCredentials(username, passHash){
 
+	console.log("== Called postSignupCredentials:");
+	console.log(" - username:" + username);
+	console.log(" - password:" + passHash);
+
+
  	var request = new XMLHttpRequest();
  	request.open('POST', '/useradd');
 
@@ -82,5 +87,35 @@ function postLoginCredentials (username, passHash){
 	console.log(" - username:" + username);
 	console.log(" - password:" + passHash);
 
-	// Stubbed cause yeah
+	var request = new XMLHttpRequest();
+ 	request.open('POST', '/userauth');
+
+ 	var credentials = {
+ 		username:username,
+ 		passHash:passHash
+
+ 	};
+
+ 	var requestBody = JSON.stringify(credentials);
+
+ 	request.setRequestHeader('Content-Type', 'application/json');
+
+ 	/* fix load below */
+ 	request.addEventListener('load', function (event) {
+		if (event.target.status !== 200) {
+
+	    	var message = event.target.response;
+	    	console.log("== Auth Failure.")
+	    	alert("Invalid Username || Password. Try Again. Message: " + message);
+
+	 	} else {
+		    
+	 		console.log("== Auth Success.")
+
+	 		/* do this on succ auth */
+		}
+	});
+
+	request.send(requestBody);
+	return;
 }
