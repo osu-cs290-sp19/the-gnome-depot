@@ -94,20 +94,16 @@ app.post('/useradd', function (req, res){
 					username: req.body.username,
 					password: req.body.passHash
 				};
-				credentials.insertOne(newUser);
-				// 	{username: req.body.username},
-				// 	{$push: {username: req.body.username, password: req.body.passHash}}, function(err, result){
-				// 		if(err){
-				// 			res.status(500).send("Error sending newUser to DB");
-				// 		} else {
-				// 			console.log("==update result: ", result);
-				// 			if(result.matchedCount > 0){
-				// 				res.status(200).send("Success");
-				// 			} else {
-				// 				res.status(404).send("Error 404 Not Sure");
-				// 			}
-				// 		}
-				// 	}
+				credentials.insertOne(newUser, function(err, result){
+					if(err){
+						res.status(500).send("Error sending newUser to DB");
+					} else {
+						if(result.matchedCount > 0){
+							res.status(200).send("Success");
+						} else {
+							res.status(404).send("Error 404 Not Sure");
+						}
+					}});
 
 			} else {
 				console.log("User already in database.");
