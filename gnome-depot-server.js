@@ -17,21 +17,16 @@
  * DO NOT COPY OUR CODE, WRITE YOUR OWN, *******!
  */
 
+/* Some Generic Requires*/
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
+var bodyParser = require('body-parser');
+/* Express & Handlebars */
 var express = require('express');
 var exphbs = require('express-handlebars');
 
-/*
-var index_html = fs.readFileSync('./public/index.html');
-var index_js = fs.readFileSync('./public/index.js');
-var style_css = fs.readFileSync('./public/style.css');
-var html_404 = fs.readFileSync('./public/404.html');
-*/
-
-/* IMPLEMENT A TEMPORARY STATICALLY SERVED SERVER SERVICE SERVING STATIC SERVER SERVICES (lol) */
-
+/* Configure the server */
 var app = express();
 var port = process.env.PORT || 6009;
 
@@ -41,7 +36,9 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 
+/* APP.GET */
 
 app.get('/', function (req, res, next) {
 
@@ -55,23 +52,72 @@ app.get('/products', function (req, res, next) {
   
 });
 
-// if(fs.existsSync(req)) {
-// 	res.status(200).render('partials/' + req);
-// }
-// app.get('/:page', function(req, res, next) {
-// 	// if pages exists
-// 	// then serve that page,
-// 	// else
-// 	// next();
-// })
-// app.get('*', function (req, res) {
-// 	res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
-// });
+app.get('/login', function (req, res, next) {
+
+	res.status(200).render('partials/login');
+  
+});
 
 app.get('*', function (req, res) {
 	res.status(404).render('partials/404');
-	// res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
   });
+
+/* APP.POST*/
+
+app.post('/useradd', function (req, res){
+	if (req.body && req.body.username && req.body.passHash){
+		console.log("== Recieved POST for AuthAdd:");
+		console.log(" - Username: " + req.body.username);
+		console.log(" - PassHash: " + req.body.passHash);
+
+		// ADD UN, PASS TO DB HERE
+
+		// COMPLETE THE PROCESS HERE
+
+		res.status(200).send("Successfully Added.");
+
+	}
+
+	else {
+		console.log("== Recieved Incomplete POST. ERRORING!");
+		res.status(400).send("Requests to this path must " +
+      		"contain a JSON body with username and password hash " +
+       		"fields.");
+	}
+});
+
+app.post('/userauth', function (req, res){
+	if (req.body && req.body.username && req.body.passHash){
+		console.log("== Recieved POST for UserAuth:");
+		console.log(" - Username: " + req.body.username);
+		console.log(" - PassHash: " + req.body.passHash);
+
+		// CHECK USERNAME & PASSWORD IN DB HERE
+
+		// COMPLETE THE PROCESS HERE
+
+		var success = 1;
+
+		if (success){
+			console.log("== Sending Auth Success");
+			res.status(200).send("Successfully Added.");
+		}
+
+		else{
+			console.log("== Sending Auth Failure");
+			res.status(400).send("Authentication Failure.");
+		}
+	}
+
+	else {
+		console.log("== Recieved Incomplete POST. ERRORING!");
+		res.status(400).send("Requests to this path must " +
+      		"contain a JSON body with username and password hash " +
+       		"fields.");
+	}
+});
+
+/* APP.LISTEN */
 
 app.listen(port, function () {
 	console.log("== Server is listening on port", port);

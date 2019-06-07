@@ -93,6 +93,7 @@ header {
     cursor: pointer;
 }
 
+/*
 .login {
     display: none;
     position: absolute;
@@ -121,6 +122,8 @@ header {
             var(--maincolor));
 }
 
+*/
+
 .login-trigger {
     color: white;
 }
@@ -130,7 +133,7 @@ header {
     
 }
 
-/* This makes it more user friendly to get your mouse into the login button */
+
 .login-trigger:hover span::after {
     content: "";
     z-index: 1;
@@ -223,6 +226,15 @@ header {
 }
 
 /*____________________/home_____________________*/
+/*____________________login_____________________*/
+.loginStuff {
+    margin-top: 100px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/*___________________/login_____________________*/
 /*___________________products___________________*/
 .tools-container {
     display: flex;
