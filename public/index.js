@@ -30,6 +30,9 @@
  	var username = document.getElementById('signupUsername').value;
  	var passHash = document.getElementById('signupPassword').value;
 
+	document.getElementById('signupUsername').value = '';
+	document.getElementById('signupPassword').value = '';
+
  	if (username && passHash){postSignupCredentials(username, passHash);}
  	else {
  		alert("Missing Username or Password");
@@ -43,6 +46,9 @@
 
  	var username = document.getElementById('loginUsername').value;
  	var passHash = document.getElementById('loginPassword').value;
+
+	document.getElementById('loginUsername').value = '';
+	document.getElementById('loginPassword').value = '';
 
  	if (username && passHash){postLoginCredentials(username, passHash);}
  	else {
