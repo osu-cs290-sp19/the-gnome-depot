@@ -22,6 +22,8 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 var bodyParser = require('body-parser');
+var crypto = require('crypto-js');
+
 /* Express & Handlebars */
 var express = require('express');
 var exphbs = require('express-handlebars');
@@ -68,7 +70,7 @@ app.post('/useradd', function (req, res){
 	if (req.body && req.body.username && req.body.passHash){
 		console.log("== Recieved POST for AuthAdd:");
 		console.log(" - Username: " + req.body.username);
-		console.log(" - PassHash: " + req.body.passHash);
+		console.log(" - PassHash: ", req.body.passHash);
 
 		// ADD UN, PASS TO DB HERE
 
