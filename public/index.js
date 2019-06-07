@@ -30,17 +30,25 @@
  	var username = document.getElementById('signupUsername').value;
  	var passHash = document.getElementById('signupPassword').value;
 
- 	postSignupCredentials(username, passHash);
+ 	if (username && passHash){postSignupCredentials(username, passHash);}
+ 	else {
+ 		alert("Missing Username or Password");
+ 		return;
+ 	}
 
  })
 
-  var loginAcceptButton = document.getElementById('loginAcceptButton');
+ var loginAcceptButton = document.getElementById('loginAcceptButton');
  loginAcceptButton.addEventListener('click', function (event){
 
  	var username = document.getElementById('loginUsername').value;
  	var passHash = document.getElementById('loginPassword').value;
 
- 	postLoginCredentials(username, passHash);
+ 	if (username && passHash){postLoginCredentials(username, passHash);}
+ 	else {
+ 		alert("Missing Username or Password");
+ 		return;
+ 	}
 
  })
 
