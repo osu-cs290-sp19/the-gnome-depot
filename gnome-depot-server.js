@@ -22,6 +22,7 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path');
 var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient;
 /* Express & Handlebars */
 var express = require('express');
 var exphbs = require('express-handlebars');
@@ -29,6 +30,18 @@ var exphbs = require('express-handlebars');
 /* Configure the server */
 var app = express();
 var port = process.env.PORT || 6009;
+
+var mongoHost = process.env.MONGO_HOST;
+var mongoPort = process.env.MONGO_PORT || 6969;
+var mongoUser = process.env.MONGO_USER;
+var mongoPassword = process.env.MONGO_PASSWORD;
+var mongoDBName = process.env.MONGO_DB_NAME;
+
+var mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort}/${mongoDBName}`;
+var db = null;
+
+console.log("mongoUrl: ", mongoUrl);
+
 
 app.engine('handlebars', exphbs({
 	defaultLayout: 'main'
@@ -43,19 +56,19 @@ app.use(bodyParser.json());
 app.get('/', function (req, res, next) {
 
 	res.status(200).render('partials/home');
-  
+
 });
 
 app.get('/products', function (req, res, next) {
 
 	res.status(200).render('partials/toolsPage');
-  
+
 });
 
 app.get('/login', function (req, res, next) {
 
 	res.status(200).render('partials/login');
-  
+
 });
 
 app.get('*', function (req, res) {
