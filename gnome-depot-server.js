@@ -86,19 +86,47 @@ app.post('/useradd', function (req, res){
 
 		// ADD UN, PASS TO DB HERE
 		var credentials = db.collection('credentials');
-		var usersCursor = credentials.find({
-  		username: req.body.username
+		credentials.find({username: req.body.username}).toArray(function(err, userData){
+			if (err) {
+	    	res.status(500).send("Error fetching user from DB.");
+	  	} else if(userData.length < 1){
+				var newUser = {
+					username: req.body.username,
+					password: req.body.passHash
+				};
+				credentials.insertOne(newUser);
+				// 	{username: req.body.username},
+				// 	{$push: {username: req.body.username, password: req.body.passHash}}, function(err, result){
+				// 		if(err){
+				// 			res.status(500).send("Error sending newUser to DB");
+				// 		} else {
+				// 			console.log("==update result: ", result);
+				// 			if(result.matchedCount > 0){
+				// 				res.status(200).send("Success");
+				// 			} else {
+				// 				res.status(404).send("Error 404 Not Sure");
+				// 			}
+				// 		}
+				// 	}
+
+			} else {
+				console.log("User already in database.");
+			}
 		});
 
-		usersCursor.next(function (err, userDoc) {
-  	if (err) {
-    	res.status(500).send("Error fetching user from DB.");
-  	} else if (!userDoc) {
-			console.log("User no existo");
-  	} else {
-	    console.log("User does exist");
-  	}
-	});
+	// 	var usersCursor = credentials.find({
+  // 		username: req.body.username
+	// 	});
+	//
+	// 	usersCursor.next(function (err, userDoc) {
+  // 	if (err) {
+  //   	res.status(500).send("Error fetching user from DB.");
+  // 	} else if (!userDoc) {
+	// 		console.log("User no existo");
+  // 	} else {
+	//     console.log("User does exist");
+  // 	}
+	// });
 
 
 		// if(usersCursor.next() === null){
@@ -133,20 +161,22 @@ app.post('/userauth', function (req, res){
 		console.log(" - PassHash: " + req.body.passHash);
 
 		// CHECK USERNAME & PASSWORD IN DB HERE
+
 		var credentials = db.collection('credentials');
 		var success = 1;
-		var usersCursor = credentials.find({
-  		'username': req.body.username,
-			'password': req.body.passHash
+
+		var credentials = db.collection('credentials');
+		credentials.find({username: req.body.username, password: req.body.passHash}).toArray(function(err, userData){
+			if (err) {
+	    	res.status(500).send("Error fetching user from DB.");
+	  	} else if(userData.length < 1){
+				success = 0;
+				console.log("== Invalid Username Or Password");
+				res.status(400).send("Invalid Username Or Password.");
+			} else {
+				console.log("User credentials are correct.");
+			}
 		});
-
-		console.log("usersCursor: ", usersCursor.next());
-
-		if(!usersCursor){
-			success = 0;
-			console.log("== Invalid Username Or Password");
-			res.status(400).send("Invalid Username Or Password.");
-		}
 
 		// COMPLETE THE PROCESS HERE
 
