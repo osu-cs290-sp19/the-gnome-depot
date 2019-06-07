@@ -25,8 +25,6 @@
 
  	passHash = CryptoJS.SHA256(password).toString(CryptoJS.enc.Base64);
 
- 	console.log(passHash);
-
 	document.getElementById('signupUsername').value = '';
 	document.getElementById('signupPassword').value = '';
 
@@ -42,7 +40,9 @@
  loginAcceptButton.addEventListener('click', function (event){
 
  	var username = document.getElementById('loginUsername').value;
- 	var passHash = document.getElementById('loginPassword').value;
+ 	var password = document.getElementById('loginPassword').value;
+
+    passHash = CryptoJS.SHA256(password).toString(CryptoJS.enc.Base64);
 
 	document.getElementById('loginUsername').value = '';
 	document.getElementById('loginPassword').value = '';
