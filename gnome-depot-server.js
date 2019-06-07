@@ -32,7 +32,7 @@ var app = express();
 var port = process.env.PORT || 6009;
 
 var mongoHost = process.env.MONGO_HOST;
-var mongoPort = process.env.MONGO_PORT || 6969;
+var mongoPort = process.env.MONGO_PORT || 27017;
 var mongoUser = process.env.MONGO_USER;
 var mongoPassword = process.env.MONGO_PASSWORD;
 var mongoDBName = process.env.MONGO_DB_NAME;
@@ -77,6 +77,7 @@ app.get('*', function (req, res) {
 
 /* APP.POST*/
 
+
 app.post('/useradd', function (req, res){
 	if (req.body && req.body.username && req.body.passHash){
 		console.log("== Recieved POST for AuthAdd:");
@@ -84,6 +85,21 @@ app.post('/useradd', function (req, res){
 		console.log(" - PassHash: " + req.body.passHash);
 
 		// ADD UN, PASS TO DB HERE
+		var credentials = db.collection('credentials');
+		var usersCursor = credentials.find({
+  		username: req.body.username
+		});
+
+		if(usersCursor.next() === null){
+			//ADD USER TO DATABASE
+			credentials.insertOne({
+				username: req.body.username,
+				password: req.body.passHash
+			});
+		} else {
+			console.log("== User Already Exists. ERRORING!");
+			res.status(400).send("User Already Exists");
+		}
 
 		// COMPLETE THE PROCESS HERE
 
@@ -106,10 +122,22 @@ app.post('/userauth', function (req, res){
 		console.log(" - PassHash: " + req.body.passHash);
 
 		// CHECK USERNAME & PASSWORD IN DB HERE
+		var credentials = db.collection('credentials');
+		var success = 1;
+		var usersCursor = credentials.find({
+  		'username': req.body.username,
+			'password': req.body.passHash
+		});
+
+		console.log("usersCursor: ", usersCursor.next());
+
+		if(!usersCursor){
+			success = 0;
+			console.log("== Invalid Username Or Password");
+			res.status(400).send("Invalid Username Or Password.");
+		}
 
 		// COMPLETE THE PROCESS HERE
-
-		var success = 1;
 
 		if (success){
 			console.log("== Sending Auth Success");
@@ -132,6 +160,12 @@ app.post('/userauth', function (req, res){
 
 /* APP.LISTEN */
 
-app.listen(port, function () {
-	console.log("== Server is listening on port", port);
+MongoClient.connect(mongoUrl, function (err, client) {
+  if (err) {
+    throw err;
+  }
+  db = client.db(mongoDBName);
+	app.listen(port, function () {
+		console.log("== Server is listening on port", port);
+	});
 });
