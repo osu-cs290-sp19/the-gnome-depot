@@ -174,8 +174,7 @@ header {
 }
 
 .navbar-search {
-    justify-self: flex-end;
-    margin-right: 20px;
+    justify-self: center;
     padding: 0;
     width: 300px;
 }
