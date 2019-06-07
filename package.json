@@ -4,7 +4,7 @@
   "description": "A Hardware Depot as a Final for CS290",
   "main": "gnome-depot-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "start": "node gnome-depot-server.js",
     "build": "echo \"Built\"",
     "prestart": "npm run build"
