@@ -227,8 +227,11 @@ header {
 
 /*____________________/home_____________________*/
 /*____________________login_____________________*/
-.signupFields {
+.loginStuff {
+    margin-top: 100px;
+    padding: 50px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 /*___________________/login_____________________*/
