@@ -32,6 +32,10 @@ var exphbs = require('express-handlebars');
 var app = express();
 var port = process.env.PORT || 6009;
 
+if (!(process.env.MONGO_HOST && process.env.MONGO_USER && process.env.MONGO_PASSWORD && process.env.MONGO_DB_NAME)){
+	throw noEnvError;
+}
+
 var mongoHost = process.env.MONGO_HOST;
 var mongoPort = process.env.MONGO_PORT || 27017;
 var mongoUser = process.env.MONGO_USER;
