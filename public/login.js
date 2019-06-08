@@ -80,7 +80,7 @@
 		if (event.target.status !== 200) {
 
 	    	var message = event.target.response;
-	    	alert("Error storing credentials in database: " + message);
+	    	alert("Error: " + message);
 
 	 	} else {
 		    
@@ -117,7 +117,7 @@ function postLoginCredentials (username, passHash){
 
 	    	var message = event.target.response;
 	    	console.log("== Auth Failure.")
-	    	alert("Invalid Username || Password. Try Again. Message: " + message);
+	    	alert("Error: " + message);
 
 	 	} else {
 		    

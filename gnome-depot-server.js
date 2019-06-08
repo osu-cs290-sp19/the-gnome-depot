@@ -33,6 +33,7 @@ var app = express();
 var port = process.env.PORT || 6009;
 
 if (!(process.env.MONGO_HOST && process.env.MONGO_USER && process.env.MONGO_PASSWORD && process.env.MONGO_DB_NAME)){
+	console.log("#### ERROR FOUND #### - Lacking One Or More Environment Variables!. Quitting.");
 	throw noEnvError;
 }
 
@@ -98,64 +99,36 @@ app.get('*', function (req, res) {
 
 app.post('/useradd', function (req, res){
 	if (req.body && req.body.username && req.body.passHash){
-		console.log("== Recieved POST for AuthAdd:");
+		console.log("== Recieved POST for UserAdd:");
 		console.log(" - Username: " + req.body.username);
 		console.log(" - PassHash: ", req.body.passHash);
 
-		// ADD UN, PASS TO DB HERE
 		var credentials = db.collection('credentials');
 		credentials.find({username: req.body.username}).toArray(function(err, userData){
-			if (err) {
+		
+		if (err) {
 	    	res.status(500).send("Error fetching user from DB.");
-	  	} else if(userData.length < 1){
-				var newUser = {
-					username: req.body.username,
-					password: req.body.passHash
-				};
-				credentials.insertOne(newUser);
+	  	} 
 
-			} else {
-				console.log("User already in database.");
-			}
-		});
+	  	else if(userData.length < 1){
+			var newUser = {
+				username: req.body.username,
+				password: req.body.passHash
+			};
+			credentials.insertOne(newUser);
 
-	// 	var usersCursor = credentials.find({
-  // 		username: req.body.username
-	// 	});
-	//
-	// 	usersCursor.next(function (err, userDoc) {
-  // 	if (err) {
-  //   	res.status(500).send("Error fetching user from DB.");
-  // 	} else if (!userDoc) {
-	// 		console.log("User no existo");
-  // 	} else {
-	//     console.log("User does exist");
-  // 	}
-	// });
+			res.status(200).send("Successfully Added.");
+		} 
 
-
-		// if(usersCursor.next() === null){
-		// 	//ADD USER TO DATABASE
-		// 	credentials.insertOne({
-		// 		username: req.body.username,
-		// 		password: req.body.passHash
-		// 	});
-		// } else {
-		// 	console.log("== User Already Exists. ERRORING!");
-		// 	res.status(400).send("User Already Exists");
-		// }
-
-		// COMPLETE THE PROCESS HERE
-
-		res.status(200).send("Successfully Added.");
-
+		else {
+			console.log("== User already in database.");
+			res.status(400).send("User Already Exists.");
+		}});
 	}
 
 	else {
-		console.log("== Recieved Incomplete POST. ERRORING!");
-		res.status(400).send("Requests to this path must " +
-      		"contain a JSON body with username and password hash " +
-       		"fields.");
+		console.log("== Recieved Incomplete POST.");
+		res.status(400).send("Incomplete Request");
 	}
 });
 
@@ -165,40 +138,32 @@ app.post('/userauth', function (req, res){
 		console.log(" - Username: " + req.body.username);
 		console.log(" - PassHash: " + req.body.passHash);
 
-		// CHECK USERNAME & PASSWORD IN DB HERE
+		// CHECK USERNAME & PASSWORD IN DB
 
-		var credentials = db.collection('credentials');
 		var success = 1;
 
 		var credentials = db.collection('credentials');
 		credentials.find({username: req.body.username, password: req.body.passHash}).toArray(function(err, userData){
-			if (err) {
+		
+		if (err) {
 	    	res.status(500).send("Error fetching user from DB.");
-	  	} else if(userData.length < 1){
-				success = 0;
-				console.log("== Invalid Username Or Password");
-				console.log("Invalid Username Or Password.");
-			} else {
-				console.log("User credentials are correct!");
-			}
-		});
+	  	} 
 
-		// COMPLETE THE PROCESS HERE
+	  	else if(userData.length < 1){
+			success = 0;
+			console.log("== Invalid Username Or Password");
+			res.status(400).send("Authentication Failure");
+		} 
 
-		if (success){
-			console.log("== Sending Auth Success");
-			res.status(200).send("Successfully Added.");
-		} else{
-			console.log("== Sending Auth Failure");
-			res.status(400).send("Authentication Failure.");
-		}
+		else {
+			console.log("== User credentials are correct!");
+			res.status(200).send("Authentication Success.");
+		}});
 	}
 
 	else {
 		console.log("== Recieved Incomplete POST. ERRORING!");
-		res.status(400).send("Requests to this path must " +
-      		"contain a JSON body with username and password hash " +
-       		"fields.");
+		res.status(400).send("Incomplete Request.");
 	}
 });
 
