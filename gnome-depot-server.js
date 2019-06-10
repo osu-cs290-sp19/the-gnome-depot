@@ -85,7 +85,7 @@ app.get('/products', function (req, res, next) {
 
 
 	res.status(200).render('partials/toolsPage', {
-		tools: toolsArray
+		toolsArray: toolsArray
 	});
 
 });
