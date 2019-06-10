@@ -10,7 +10,7 @@ A queryable hardware store.
 
 Establish a connection to the OSU VPN or run on FLIP. 
 
-```start.sh```
+```./start.sh```
 
 Couldn't be much easier.
 
