@@ -83,7 +83,10 @@ app.get('/products', function (req, res, next) {
 	tools.deleteMany({});
 	tools.insertMany(toolsArray);
 
-	res.status(200).render('partials/toolsPage');
+
+	res.status(200).render('partials/toolsPage', {
+		tools: toolsArray
+	});
 
 });
 
