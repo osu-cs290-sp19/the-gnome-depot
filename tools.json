@@ -3,27 +3,27 @@
     "name" : "drill",
     "img" : "drill_press_portable.png",
     "price" : "24.99",
-    "weight" : "3 lb"
+    "qty" : "3"
   },
 
   {
     "name" : "hammer",
     "img" : "dead_blow_hammer.jpg",
     "price" : "12.50",
-    "weight" : "1.5 lb"
+    "qty" : "7"
   },
 
   {
     "name" : "nail",
     "img" : "long_nail.jpg",
     "price" : "7.99",
-    "weight" : "0.5 lb"
+    "qty" : "4"
   },
 
   {
     "name" : "chainsaw",
     "img" : "chainsaw_long.jpg",
     "price" : "30.99",
-    "weight" : "10 lb"
+    "qty" : "10"
   }
 ]
