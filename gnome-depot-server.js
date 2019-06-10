@@ -79,6 +79,8 @@ app.get('/', function (req, res, next) {
 app.get('/products', function (req, res, next) {
 
 	var tools = db.collection('tools');
+	//clear and restck database
+	tools.deleteMany({});
 	tools.insertMany(toolsArray);
 
 	res.status(200).render('partials/toolsPage');
