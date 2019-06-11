@@ -70,7 +70,13 @@ app.use(bodyParser.json());
 
 /* APP.GET */
 
-app.get('/', function (req, res, next) {
+app.get('/' , function (req, res, next) {
+
+	res.status(200).render('partials/home');
+
+});
+
+app.get('/index.html' , function (req, res, next) {
 
 	res.status(200).render('partials/home');
 
