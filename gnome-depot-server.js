@@ -90,10 +90,17 @@ app.get('/products', function (req, res, next) {
 	//clear and restck database
 	tools.deleteMany({});
 	tools.insertMany(toolsArray);
-
-
-	res.status(200).render('partials/toolsPage', {
-		toolsArray: toolsArray
+	
+	var allToolsCursor = tools.find({});
+	allToolsCursor.toArray(function(err, toolDocs){
+		if(err){
+			res.status(500).send("Error fetching tools from DB.");
+		} else {
+			console.log(toolDocs);
+			res.status(200).render('partials/toolsPage', {
+           		     toolsArray: toolsArray
+        		});
+		}
 	});
 
 });
