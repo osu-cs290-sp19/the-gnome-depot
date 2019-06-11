@@ -9,7 +9,7 @@
     "name": "Short Chainsaw",
     "price": "$239.99",
     "qty": 1, 
-    "img": "images/temp-tools/short.jfif"
+    "img": "images/temp-tools/chainsaw_short.jpg"
   },
   {
     "name": "Dead Blow Hammer",
@@ -27,7 +27,7 @@
     "name": "Portable Drill Press",
     "price": "$429.99",
     "qty": 2, 
-    "img": "images/temp-tools/drill_press_hammer.jpg"
+    "img": "images/temp-tools/drill_press_portable.png"
   },
   {
     "name": "Long Chainsaw",
@@ -46,12 +46,6 @@
     "price": "$119.91",
     "qty": 920, 
     "img": "images/temp-tools/ramset.jpg"
-  },
-  {
-    "name": "Ramset Nails",
-    "price": "$.99",
-    "qty": 853, 
-    "img": "images/temp-tools/ramset_nails.jfif"
   },
   {
     "name": "Ribbed Nails",
