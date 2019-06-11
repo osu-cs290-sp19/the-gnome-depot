@@ -122,6 +122,8 @@ function postLoginCredentials (username, passHash){
 	 	} else {
 		    
 	 		console.log("== Auth Success.")
+            alert("Auth Success.");
+            window.location.replace("/");
 
 	 		/* do this on succ auth */
 		}

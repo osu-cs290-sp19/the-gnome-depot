@@ -49,7 +49,7 @@ var db = null;
 
 console.log("mongoUrl: ", mongoUrl);
 /* READING TOOLS INTO DATABASE FROM JSON FILE */
-var toolData = fs.readFileSync('tools.json', 'utf8');
+var toolData = fs.readFileSync('tools_init.json', 'utf8');
 var parsedData = JSON.parse(toolData);
 var toolsArray = [];
 var numTools = Object.keys(parsedData).length;
@@ -70,7 +70,15 @@ app.use(bodyParser.json());
 
 /* APP.GET */
 
-app.get('/', function (req, res, next) {
+app.get('/' , function (req, res, next) {
+
+	res.status(200).render('partials/home');
+
+});
+
+/* Technically not need but useful in case someone comes lookin' for index.html */
+
+app.get('/index.html' , function (req, res, next) {
 
 	res.status(200).render('partials/home');
 
@@ -83,7 +91,10 @@ app.get('/products', function (req, res, next) {
 	tools.deleteMany({});
 	tools.insertMany(toolsArray);
 
-	res.status(200).render('partials/toolsPage');
+
+	res.status(200).render('partials/toolsPage', {
+		toolsArray: toolsArray
+	});
 
 });
 
