@@ -3,66 +3,267 @@
     "name": "Long Chainsaw",
     "price": "$339.99",
     "qty": 3, 
-    "img": "images/temp-tools/chainsaw_long.jpg"
+    "img": "images/tools/chainsaw_long.jpg"
   },
   {
     "name": "Short Chainsaw",
     "price": "$239.99",
     "qty": 1, 
-    "img": "images/temp-tools/chainsaw_short.jpg"
+    "img": "images/tools/chainsaw_short.jpg"
   },
   {
     "name": "Dead Blow Hammer",
     "price": "$139.99",
     "qty": 2, 
-    "img": "images/temp-tools/dead_blow_hammer.jpg"
+    "img": "images/tools/dead_blow_hammer.jpg"
   },
   {
     "name": "drill",
     "price": "$199.99",
     "qty": 7, 
-    "img": "images/temp-tools/drill.jfif"
+    "img": "images/tools/drill.jpg"
   },
   {
     "name": "Portable Drill Press",
     "price": "$429.99",
     "qty": 2, 
-    "img": "images/temp-tools/drill_press_portable.png"
+    "img": "images/tools/drill_press_portable.png"
   },
   {
     "name": "Long Chainsaw",
     "price": "$339.99",
     "qty": 35, 
-    "img": "images/temp-tools/chainsaw_long.jpg"
+    "img": "images/tools/chainsaw_long.jpg"
   },
   {
     "name": "Long Nail",
     "price": "$.89",
     "qty": 124, 
-    "img": "images/temp-tools/long_nail.jpg"
+    "img": "images/tools/long_nail.jpg"
   },
   {
     "name": "Ramset",
     "price": "$119.91",
     "qty": 920, 
-    "img": "images/temp-tools/ramset.jpg"
+    "img": "images/tools/ramset.jpg"
   },
   {
     "name": "Ribbed Nails",
     "price": "$1.09",
     "qty": 79, 
-    "img": "images/temp-tools/ribbed_nail.jpg"
+    "img": "images/tools/ribbed_nail.jpg"
+  },
+  {
+    "name": "Ramset Nails",
+    "price": "$11.92",
+    "qty": 37, 
+    "img": "images/tools/ramset_nails.jpg"
   },
   {
     "name": "Small Nails",
     "price": "$.49",
     "qty": 95, 
-    "img": "images/temp-tools/small_nail.jpg"
+    "img": "images/tools/small_nail.jpg"
   },
   {
     "name": "Square Nails",
     "price": "$1.38",
     "qty": 75, 
-    "img": "images/temp-tools/ribbed_nail.jpg"
+    "img": "images/tools/square_nail.jpg"
+  },
+  { "name": "Extra Large Air Compressor",
+    "price": "$599.05",
+    "qty": 40,
+    "img": "images/tools/air_compressor_extra_large.jpg"
+	},
+  { "name": "Large Air Compressor",
+    "price": "$394.45",
+    "qty": 432,
+    "img": "images/tools/air_compressor_large.jpg"
+	},
+  { "name": "Medium Air Compressor",
+    "price": "$233.33",
+    "qty": 54,
+    "img": "images/tools/air_compressor_medium.jpg"
+	},
+  { "name": "Small Air Compressor",
+    "price": "$22.34",
+    "qty": 332,
+    "img": "images/tools/air_compressor_small.jpg"
+	},
+  { "name": "Cement Mixer",
+    "price": "$1999",
+    "qty": 21,
+    "img": "images/tools/cement_mixer.jpg"
+	},
+  { "name": "Chamfer Drill Bit (45 Deg.)",
+    "price": "$45.45",
+    "qty": 45,
+    "img": "images/tools/chamfer_bit.jpg"
+	},
+  { "name": "Budget Wire Strippers",
+    "price": "$12.12",
+    "qty": 489,
+    "img": "images/tools/cheap_wire_strippers.jpg"
+	},
+  { "name": "Circular Saw",
+    "price": "$210.42",
+    "qty": 43,
+    "img": "images/tools/circular_saw.jpg"
+	},
+  { "name": "Diamond Cutting Bits",
+    "price": "$600",
+    "qty": 2,
+    "img": "images/tools/diamond_cutting_bits.jpg"
+	},
+  { "name": "Drill Bits",
+    "price": "$45",
+    "qty": 34,
+    "img": "images/tools/drill_bits.jpg"
+	},
+  { "name": "Drill Combo Set",
+    "price": "$167.99",
+    "qty": 12,
+    "img": "images/tools/drill_set.jpg"
+	},
+  { "name": "Duct Tape",
+    "price": "$12.99",
+    "qty": 1304,
+    "img": "images/tools/duct_tape.jpg"
+	},
+  { "name": "Fish Tape",
+    "price": "$49.94",
+    "qty": 54,
+    "img": "images/tools/fish_tape.jpg"
+	},
+  { "name": "Garden Gnooooome",
+    "price": "$69.69",
+    "qty": 69,
+    "img": "images/tools/garden_gnome.jpg"
+	},
+  { "name": "Garden Sheers",
+    "price": "$18.99",
+    "qty": 182,
+    "img": "images/tools/garden_sheers.jpg"
+	},
+  { "name": "Grinding Wheel",
+    "price": "$23.44",
+    "qty": 109,
+    "img": "images/tools/grinding_wheel.jpg"
+	},
+  { "name": "Hair Dryer",
+    "price": "$12.98",
+    "qty": 44,
+    "img": "images/tools/hair_dryer.jpg"
+	},
+  { "name": "Hole Drill Bits",
+    "price": "$45.22",
+    "qty": 100,
+    "img": "images/tools/hole_drill_bits.jpg"
+	},
+  { "name": "Hüdrolic Press",
+    "price": "$44.94",
+    "qty": 58,
+    "img": "images/tools/hudrolic_press.jpg"
+	},
+  { "name": "Jigsaw",
+    "price": "$56.99",
+    "qty": 23,
+    "img": "images/tools/jigsaw.jpg"
+	},
+  { "name": "Lockout Kit Components",
+    "price": "$123.22",
+    "qty": 4,
+    "img": "images/tools/lockout_kit.jpg"
+	},
+  { "name": "Mini-Snips",
+    "price": "$16.99",
+    "qty": 893,
+    "img": "images/tools/mini_snips.jpg"
+	},
+  { "name": "Nail Gun",
+    "price": "$55.55",
+    "qty": 23,
+    "img": "images/tools/nail_gun.jpg"
+	},
+  { "name": "Oscillating Cutter",
+    "price": "$88.23",
+    "qty": 92,
+    "img": "images/tools/oscillating_cutter.jpg"
+	},
+  { "name": "PVC Cutter",
+    "price": "$13.99",
+    "qty": 593,
+    "img": "images/tools/pvc_cutter.jpg"
+	},
+  { "name": "Right Angle StraightEdge",
+    "price": "$10.98",
+    "qty": 211,
+    "img": "images/tools/right_angle.jpg"
+	},
+  { "name": "Circular Saw Blade",
+    "price": "$4.99",
+    "qty": 239,
+    "img": "images/tools/saw_blade.jpg"
+	},
+  { "name": "Slack Adjuster",
+    "price": "$9.33",
+    "qty": 403,
+    "img": "images/tools/slack_adjuster.jpg"
+	},
+  { "name": "Socket Set",
+    "price": "$55.93",
+    "qty": 102,
+    "img": "images/tools/socket_set.jpg"
+	},
+  { "name": "Table Planer",
+    "price": "$1929.99",
+    "qty": 5,
+    "img": "images/tools/table_planer.jpg"
+	},
+  { "name": "Tap and Hex Combo Set",
+    "price": "$14.99",
+    "qty": 9,
+    "img": "images/tools/tap_and_hex.jpg"
+	},
+  { "name": "Tile Saw",
+    "price": "$893.34",
+    "qty": 79,
+    "img": "images/tools/tile_saw.jpg"
+	},
+  { "name": "Large Toolbox",
+    "price": "$92.93",
+    "qty": 10,
+    "img": "images/tools/toolbox_large.jpg"
+	},
+  { "name": "Ultra Fancy Super Duper Mega Awesome Cutting Bit",
+    "price": "$6969.96",
+    "qty": 23,
+    "img": "images/tools/ultra_fancy_cutting_bit.jpg"
+	},
+  { "name": "Wire Cutters",
+    "price": "$29.94",
+    "qty": 40,
+    "img": "images/tools/wire_cutters.jpg"
+	},
+  { "name": "Wire Strippers",
+    "price": "$100.92",
+    "qty": 45,
+    "img": "images/tools/wire_strippers.jpg"
+	},
+  { "name": "Tool Bag",
+    "price": "$15.99",
+    "qty": 2,
+    "img": "images/tools/work_bag.jpg"
+	},
+  { "name": "Work Bench (Style 1)",
+    "price": "$778.99",
+    "qty": 8,
+    "img": "images/tools/work_bench_1.jpg"
+	},
+  { "name": "Work Bench (Style 2)",
+    "price": "$993.33",
+    "qty": 9,
+    "img": "images/tools/work_bench_2.jpg" 
   }
 ]
