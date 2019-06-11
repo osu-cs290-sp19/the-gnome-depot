@@ -76,6 +76,8 @@ app.get('/' , function (req, res, next) {
 
 });
 
+/* Technically not need but useful in case someone comes lookin' for index.html */
+
 app.get('/index.html' , function (req, res, next) {
 
 	res.status(200).render('partials/home');
