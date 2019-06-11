@@ -49,7 +49,7 @@ var db = null;
 
 console.log("mongoUrl: ", mongoUrl);
 /* READING TOOLS INTO DATABASE FROM JSON FILE */
-var toolData = fs.readFileSync('tools.json', 'utf8');
+var toolData = fs.readFileSync('tools_init.json', 'utf8');
 var parsedData = JSON.parse(toolData);
 var toolsArray = [];
 var numTools = Object.keys(parsedData).length;

@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css" media="screen">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.runtime.js" charset="utf-8" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.runtime.js" charset="utf-8"
+        defer></script>
     <script src="/index.js" charset="utf-8" defer></script>
 </head>
 
@@ -20,8 +21,8 @@
         <div id="upper-nav" class="">
             <div class="login-trigger">
                 <span><a href='/login'>Login or Signup </a></span>
-                </div>
             </div>
+        </div>
 
         </div>
         <nav id="navbar">
@@ -29,9 +30,13 @@
                 <li class="nav-item nav-link"><a href="/">Home</a></li>
                 <li class="nav-item nav-link"><a href="/products">Products</a></li>
             </ul>
-            <img class="gnome-logo" src="images/gnome.png">
-            <input class="navbar-search" type="text" name="search" placeholder="Search for tools to break me out!">
-            <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
+            <div class="search-container">
+                <img class="gnome-logo" src="images/gnome.png">
+                <input class="navbar-search" type="text" name="search" placeholder="Search for tools to break me out!">
+                <button type="button" id="navbar-search-button"><img class="gnome-logo"
+                        src="images/gnome-mirror-magnifying-glass.png"></button>
+            </div>
+
         </nav>
     </header>
 
