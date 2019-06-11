@@ -98,7 +98,7 @@ app.get('/products', function (req, res, next) {
 		} else {
 			console.log(toolDocs);
 			res.status(200).render('partials/toolsPage', {
-           		     toolsArray: toolsArray
+           		     toolsArray: toolDocs
         		});
 		}
 	});
