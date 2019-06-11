@@ -48,7 +48,7 @@ var mongoUrl = `mongodb://${mongoUser}:${mongoPassword}@${mongoHost}:${mongoPort
 var db = null;
 
 console.log("mongoUrl: ", mongoUrl);
-/* READING TOOLS INTO DATABASE FROM JSON FILE */
+/* READING TOOLS INTO DATABASE FROM TOOLS_INIT.JSON FILE */
 var toolData = fs.readFileSync('tools_init.json', 'utf8');
 var parsedData = JSON.parse(toolData);
 var toolsArray = [];
