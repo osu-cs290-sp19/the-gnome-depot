@@ -25,21 +25,24 @@
  // ^Thats dank lol.
 
 
+var button = document.getElementById("navbar-search-button");
+var input = document.getElementsByClassName("navbar-search")[0];
 
-document.getElementById("navbar-search-button").addEventListener("click", handleSearch);
+input.addEventListener("keyup", function(event){
+	console.log("THis is happening");
+	if(event.keyCode === 13){
+		event.preventDefault();
+		button.click();
+	}
+});
+
+
+button.addEventListener("click", handleSearch);
 
 function handleSearch() {
 	var searchInput = document.getElementsByClassName("navbar-search")[0].value.trim();
 	console.log("search input: ", searchInput);
 
-	/*
-	var getRequest = new XMLHttpRequest();
-	var requestURL = '/products/' + searchInput;
-	getRequest.open('GET', requestURL);
-
-	getRequest.setRequestHeader('Content-Type', 'application/json');
-	getRequest.send();
-	*/
 	window.location.assign("/search/" + searchInput);
 
 }
