@@ -34,7 +34,7 @@ function handleSearch() {
 
 	var getRequest = new XMLHttpRequest();
 	var requestURL = '/products/' + searchInput;
-	postRequest.open('GET', requestURL);
+	getRequest.open('GET', requestURL);
 
 	var requestBody = JSON.stringify({
 		searchInput: searchInput	
