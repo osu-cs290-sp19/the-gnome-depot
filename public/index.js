@@ -24,3 +24,10 @@
 
  // ^Thats dank lol.
 
+
+
+document.getElementById("navbar-search-button").addEventListener("click", handleSearch);
+
+function handleSearch() {
+	var searchInput = document.getElementByClassName("navbar-search")[0];
+}
