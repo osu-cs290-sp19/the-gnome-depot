@@ -32,4 +32,15 @@ function handleSearch() {
 	var searchInput = document.getElementsByClassName("navbar-search")[0].value.trim();
 	console.log("search input: ", searchInput);
 
+	var postRequest = new XMLHttpRequest();
+	var requestURL = '/products/' + searchInput;
+	postRequest.open('POST', requestURL);
+
+	var requestBody = JSON.stringify({
+		searchInput: searchInput	
+	});
+
+	postRequest.setRequestHeader('Content-Type', 'application/json');
+	postRequest.send(requestBody);
+
 }
