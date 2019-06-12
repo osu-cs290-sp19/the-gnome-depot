@@ -2,20 +2,21 @@
 <script src="/login.js" charset="utf-8" defer></script>
 
 <div class="loginStuff">
-	<h2>Log In to the Gnome Depot</h2>
 	<div class="loginFields">
-		username:<input type='text' id='loginUsername'>
-		password:<input type='password' encrypt="sha1" id='loginPassword'>
+		<h2>Log In</h2>
+		<input type='text' placeholder="Username" id='loginUsername' class="login-child">
+		<input type='password' encrypt="sha1" placeholder="Password" id='loginPassword' class="login-child">
 
-		<button type="button" id='loginAcceptButton'>log in</button>
+		<button type="button" id='loginAcceptButton' class="login-button">log in</button>
 	</div>
 
-	<h2>New User Sign Up</h2>
+	
 	<div class="signupFields">
-		username:<input type='text' id='signupUsername'>
-		password:<input type='password' encrypt="sha1" id='signupPassword'>
+		<h2>New User Sign Up</h2>
+		<input type='text' id='signupUsername' class="login-child" placeholder="Username">
+		<input type='password' encrypt="sha1" placeholder="Password" id='signupPassword' class="login-child">
 
-		<button type="button" id='signupAcceptButton'>sign up</button>
+		<button type="button" id='signupAcceptButton' class="login-button">sign up</button>
 	</div>
 </div>
 
