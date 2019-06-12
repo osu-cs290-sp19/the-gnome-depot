@@ -40,6 +40,6 @@ function handleSearch() {
 	getRequest.setRequestHeader('Content-Type', 'application/json');
 	getRequest.send();
 	*/
-	window.location.replace("/search/" + searchInput);
+	window.location.assign("/search/" + searchInput);
 
 }
