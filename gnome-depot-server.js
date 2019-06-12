@@ -84,6 +84,12 @@ app.get('/index.html' , function (req, res, next) {
 
 });
 
+app.get('/products/:search', function (req, res, next) {
+
+        var tools = db.collection('tools');
+
+}
+
 app.get('/products', function (req, res, next) {
 
 	var tools = db.collection('tools');
