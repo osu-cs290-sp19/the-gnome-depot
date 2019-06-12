@@ -182,6 +182,7 @@ header {
 }
 
 .navbar-search {
+    font-size: 20px;
     margin: 5px 0;
     padding: 3px 0;
     height: 55px;
