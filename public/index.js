@@ -24,3 +24,22 @@
 
  // ^Thats dank lol.
 
+
+
+document.getElementById("navbar-search-button").addEventListener("click", handleSearch);
+
+function handleSearch() {
+	var searchInput = document.getElementsByClassName("navbar-search")[0].value.trim();
+	console.log("search input: ", searchInput);
+
+	/*
+	var getRequest = new XMLHttpRequest();
+	var requestURL = '/products/' + searchInput;
+	getRequest.open('GET', requestURL);
+
+	getRequest.setRequestHeader('Content-Type', 'application/json');
+	getRequest.send();
+	*/
+	window.location.assign("/search/" + searchInput);
+
+}

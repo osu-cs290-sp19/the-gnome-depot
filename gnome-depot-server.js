@@ -71,7 +71,12 @@ app.use(bodyParser.json());
 /* APP.GET */
 
 app.get('/' , function (req, res, next) {
-
+	/*
+	//clear and restck database
+  	var tools = db.collection('tools');
+  	tools.deleteMany({});
+  	tools.insertMany(toolsArray);
+	*/
 	res.status(200).render('partials/home');
 
 });
@@ -87,14 +92,37 @@ app.get('/index.html' , function (req, res, next) {
 app.get('/products', function (req, res, next) {
 
 	var tools = db.collection('tools');
-	//clear and restck database
-	tools.deleteMany({});
-	tools.insertMany(toolsArray);
-
-
-	res.status(200).render('partials/toolsPage', {
-		toolsArray: toolsArray
+	
+	var allToolsCursor = tools.find({});
+	allToolsCursor.toArray(function(err, toolDocs){
+		if(err){
+			res.status(500).send("Error fetching tools from DB.");
+		} else {
+			console.log("toolDocs: ", toolDocs);
+			res.status(200).render('partials/toolsPage', {
+           		     toolsArray: toolDocs
+        		});
+		}
 	});
+
+});
+
+app.get('/search/:search', function (req, res, next) {
+
+        console.log("req.params.search", req.params.search);
+
+	var tools = db.collection('tools');
+        var toolsFoundCursor = tools.find({name: req.params.search});
+        toolsFoundCursor.toArray(function(err, toolDocs){
+        	if(err){
+                	res.status(500).send("Error fetching searched tools from DB.");
+                } else {
+                        console.log(toolDocs);
+                        res.status(200).render('partials/toolsPage', {
+                        	toolsArray: toolDocs
+                        });
+                }
+        });
 
 });
 
@@ -188,7 +216,13 @@ MongoClient.connect(mongoUrl, function (err, client) {
     throw err;
   }
   db = client.db(mongoDBName);
-	app.listen(port, function () {
-		console.log("== Server is listening on port", port);
-	});
+
+  //clear and restck database
+  var tools = db.collection('tools');
+  tools.deleteMany({});
+  tools.insertMany(toolsArray);
+
+  app.listen(port, function () {
+	console.log("== Server is listening on port", port);
+  });
 });
