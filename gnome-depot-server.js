@@ -109,10 +109,12 @@ app.get('/products', function (req, res, next) {
 
 app.get('/search/:search', function (req, res, next) {
 
-        console.log("req.params.search", req.params.search);
+	var userSearch = req.params.search;
+        console.log("userSearch:  ", userSearch);
 
 	var tools = db.collection('tools');
-        var toolsFoundCursor = tools.find({name: req.params.search});
+        var toolsFoundCursor = tools.find({$text: {$search: userSearch}});
+	console.log("toolsFoundCursor: ", toolsFoundCursor);
         toolsFoundCursor.toArray(function(err, toolDocs){
         	if(err){
                 	res.status(500).send("Error fetching searched tools from DB.");
