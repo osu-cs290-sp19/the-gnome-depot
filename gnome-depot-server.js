@@ -86,9 +86,27 @@ app.get('/index.html' , function (req, res, next) {
 
 app.get('/products/:search', function (req, res, next) {
 
-        var tools = db.collection('tools');
+	console.log("req.body.searchInput: ", req.body.searchInput);
+	console.log("req.params.search ", req.params.search);
 
-}
+	if(req.body && req.body.searchInput){
+		var tools = db.collection('tools');
+		var toolsFoundCursor = tools.find({name: req.body.searchInput});
+        	toolsFoundCursor.toArray(function(err, toolDocs){
+                	if(err){
+                        	res.status(500).send("Error fetching searched tools from DB.");
+                	} else {
+                        	console.log(toolDocs);
+                        	res.status(200).render('partials/toolsPage', {
+                             	toolsArray: toolDocs
+                        	});
+                	}
+        	});
+	} else {
+		res.status(400).send("Request must specify search input.");
+	}
+
+});
 
 app.get('/products', function (req, res, next) {
 
