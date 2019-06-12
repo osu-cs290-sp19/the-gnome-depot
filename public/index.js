@@ -29,5 +29,7 @@
 document.getElementById("navbar-search-button").addEventListener("click", handleSearch);
 
 function handleSearch() {
-	var searchInput = document.getElementByClassName("navbar-search")[0];
+	var searchInput = document.getElementsByClassName("navbar-search")[0].value.trim();
+	console.log("search input: ", searchInput);
+
 }
